@@ -7,4 +7,4 @@ Bienvenidos al repositorio de _**Github-copilot**_ aqui podran subir codigo que 
 
 2 NO VAINA FURRA
 
-En este archivo tambien se ira actualizando.
+Este archivo tambien se ira actualizando.
