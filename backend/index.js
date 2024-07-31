@@ -4,30 +4,31 @@ cors = require('cors');
 
 app.use(cors())
 app.use(express.static('dist'))
+app.use(express.json())
 
 const notes = [
     {
-        "id": "1",
+        "id": 1,
         "content": "HTML is easy",
         "important": true
     },
     {
-        "id": "2",
+        "id": 2,
         "content": "Browser can execute only JavaScript",
         "important": true
     },
     {
-        "id": "3",
+        "id": 3,
         "content": "GET and POST are the most important methods of HTTP protocol",
         "important": true
     },
     {
-        "id": "4",
+        "id": 4,
         "content": "a new note...",
         "important": false
     },
     {
-        "id": "5",
+        "id": 5,
         "content": "Learn C#",
         "important": true
     },
@@ -51,6 +52,23 @@ app.get('/', (request, response) => {
 app.get('/api/notes', (request, response) => {
     response.json(notes);
 })
+
+app.get('api/notes/:id', (request, response) => {
+    const id = Number(request.params.id);
+    //const note = notes.find(n => n.id === id);
+    response.json(notes[id]);
+})
+
+app.post('/api/notes', (request, response) => {
+    const note = request.body;
+    console.log(note)
+    response.json(note);
+})
+
+app.put('/api/notes/:id', (request, response) => {
+    const id = Number(request.params.id);
+})
+
 
 
 
