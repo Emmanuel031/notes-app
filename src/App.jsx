@@ -6,7 +6,7 @@ import noteService from './services/notes';
 const App = () => {
   const [notes, setNotes] = useState([]),
     [newNote, setNewNote] = useState("a new note..."),
-    [showAll, setShowAll] = useState(true);
+    [showAll, setShowAll] = useState(false);
 
   useEffect(() => {
     console.log("effect");

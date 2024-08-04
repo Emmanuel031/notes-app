@@ -4,14 +4,16 @@ const baseUrl = 'http://localhost:3001/api/notes';
 
 
 // ----------------------------------------------------------
-//  Función que maneja una solicitud HTTP GET a la ruta raíz
+//  Función que maneja solicitudes HTTP GET a la ruta raíz
 // ----------------------------------------------------------
 const getAll = async () => {
     const request = axios.get(baseUrl)
     return request.then(response => response.data)
 }
 
-
+// --------------------------------------------
+//  Función que maneja solicitudes HTTP POST
+// --------------------------------------------
 const create = async newObject => {
     const request = axios.post(baseUrl, newObject)
     return request.then(response => response.data);
