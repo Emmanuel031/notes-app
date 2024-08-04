@@ -2,9 +2,11 @@ const express = require('express'),
 app = express(),
 cors = require('cors');
 
+
 app.use(cors())
-app.use(express.static('dist'))
 app.use(express.json())
+//app.use(express.static('dist'))
+
 
 const notes = [
     {
@@ -46,27 +48,35 @@ const notes = [
 
 
 app.get('/', (request, response) => {
-    response.send('<h1>Hello world</h1>')
+    response.send('<h1>Hello world, this is my server!</h1>')
 })
 
 app.get('/api/notes', (request, response) => {
     response.json(notes);
 })
 
-app.get('api/notes/:id', (request, response) => {
+app.get('/api/notes/:id', (request, response) => {
     const id = Number(request.params.id);
-    //const note = notes.find(n => n.id === id);
-    response.json(notes[id]);
+    const note = notes.find(n => n.id === id);
+    response.json(note);
 })
 
 app.post('/api/notes', (request, response) => {
     const note = request.body;
     console.log(note)
+
+    notes.push(note);
+    console.log(notes);
     response.json(note);
 })
 
 app.put('/api/notes/:id', (request, response) => {
-    const id = Number(request.params.id);
+    const id = Number(request.params.id),
+    newObject = request.body;
+
+    notes[id - 1] = newObject;
+
+    response.send(notes[0])
 })
 
 
