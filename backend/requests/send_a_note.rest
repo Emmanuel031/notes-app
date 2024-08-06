@@ -1,0 +1,7 @@
+POST http://localhost:3001/api/notes
+
+{
+    "id": 9,
+    "content": "I like the Pizza",
+    "important": true
+}
